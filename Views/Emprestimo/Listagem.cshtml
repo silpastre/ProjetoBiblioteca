@@ -4,6 +4,12 @@
     int FiltroPorPag = Int32.Parse(ViewData["emprestimosPorPagina"].ToString());
     int PaginaAtual = Int32.Parse(ViewData["PaginaAtual"].ToString());
     int NumEmprestimoPorPag = (Model.Count < FiltroPorPag ? Model.Count : FiltroPorPag);
+
+    if(NumEmprestimoPorPag == 0)
+    {
+        NumEmprestimoPorPag = 1;
+    }
+    
     int NumTotalDePag = Model.Count/NumEmprestimoPorPag + (Model.Count % NumEmprestimoPorPag == 0 ? 0 : 1);
 
     string Classe = "";
